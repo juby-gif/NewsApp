@@ -1,0 +1,83 @@
+/* Login.css */
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.login .login-form {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  max-width: 400px;
+  /* Adjust the maximum width as needed */
+  width: 100%;
+  margin: 0 auto;
+  /* Center the form horizontally */
+}
+
+/* Add media query for mobile devices */
+@media (max-width: 767px) {
+  .login-form {
+    max-width: 100%;
+  }
+}
+
+.login .login-form.transition {
+  opacity: 0;
+}
+
+.login h1 {
+  text-align: center;
+}
+
+.login .error-message {
+  color: #ff4d4f;
+  font-size: 0.9rem;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.login .error-message.show {
+  opacity: 1;
+}
+
+
+.login .form-field {
+  margin-bottom: 1rem;
+}
+
+.login label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.login input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.register-link {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: flex-end;
+}
+
+.register-link a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.register-link a:hover {
+  color: darkblue;
+}

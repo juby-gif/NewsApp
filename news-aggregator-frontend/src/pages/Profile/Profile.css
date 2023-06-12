@@ -1,0 +1,89 @@
+/* Header Styles */
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  /* Profile Information Styles */
+  .profile-information {
+    margin: 20px;
+  }
+  
+  .profile-information h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-information div {
+    margin-bottom: 20px;
+  }
+  
+  .profile-information label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .profile-information input[type="text"],
+  .profile-information input[type="email"] {
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .profile-information input[type="file"] {
+    margin-top: 5px;
+  }
+  
+  .profile-information img {
+    margin-top: 5px;
+    max-width: 200px;
+  }
+  
+  /* Preferences Styles */
+  .preferences {
+    margin: 20px;
+  }
+  
+  .preferences h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .preferences form {
+    margin-bottom: 20px;
+  }
+  
+  .preferences label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .preferences input[type="text"] {
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .preferences button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* News Feed Styles */
+  .news-feed {
+    margin: 20px;
+  }
+  
+  .news-feed h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .news-feed p {
+    margin-top: 0;
+  }
+  

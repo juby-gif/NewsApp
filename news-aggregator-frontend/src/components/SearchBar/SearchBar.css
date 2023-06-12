@@ -1,0 +1,39 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Stretch to the container */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 0.75rem;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%; /* Stretch to the container */
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  width: 100%; /* Stretch to the container */
+
+  /* Adjust padding for filter containers */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.filter-container > * {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  flex-grow: 1; /* Distribute remaining space evenly */
+}
