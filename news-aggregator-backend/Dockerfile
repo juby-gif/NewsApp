@@ -24,14 +24,10 @@ COPY --from=composer:2.1 /usr/bin/composer /usr/bin/composer
 COPY . .
 
 # Install composer dependencies
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --optimize-autoloader --no-dev
 
 # Set up permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
-
-# Set the MySQL root password
-ENV MYSQL_ROOT_PASSWORD=root
 
 # Generate application key
 RUN php artisan key:generate
