@@ -48,9 +48,9 @@ To get started with the News Aggregator application, follow the steps below:
 ### Configuration
 The Docker Compose file docker-compose.yml contains the configuration for the application services. You can modify the following environment variables in the news_aggregator_backend service section to customize the database connection:
 
-- `DB_HOST` : The hostname of the database service. By default, it is set to db, which corresponds to the MySQL container in the db service.
-- `DB_DATABASE` : The name of the database to use. By default, it is set to news_aggregator.
-- `DB_USERNAME` : The username for the database connection. By default, it is set to root.
-- `DB_PASSWORD` : The password for the database connection. By default, it is set to root.
+- DB_HOST : The hostname of the database service. By default, it is set to `news-aggregator-db`, which corresponds to the MySQL container in the db service.
+- DB_DATABASE : The name of the database to use. By default, it is set to `news_aggregator`.
+- DB_USERNAME : The username for the database connection. By default, it is set to `root`.
+- DB_PASSWORD : The password for the database connection. By default, it is set to `root`.
 
 Make sure to update these variables according to your specific requirements.
