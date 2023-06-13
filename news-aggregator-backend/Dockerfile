@@ -24,6 +24,7 @@ COPY --from=composer:2.1 /usr/bin/composer /usr/bin/composer
 COPY . .
 
 # Install composer dependencies
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --optimize-autoloader --no-dev
 
 # Set up permissions
@@ -36,4 +37,4 @@ RUN php artisan key:generate
 EXPOSE 8000
 
 # Set the command to run the application
-CMD ["php", "artisan", "serve", "--host=0.0.0.0"]
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0
