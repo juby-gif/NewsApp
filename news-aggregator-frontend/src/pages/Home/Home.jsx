@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
-import { Header, SearchBar, ArticleCard } from '../../components';
+import { Header, SearchBar, ArticleCard, EmptyComponent } from '../../components';
 import './Home.css';
 import { 
   API_ENDPOINTS, 
@@ -23,6 +23,8 @@ const Home = () => {
   });
   const [error, setError] = useState('');
   const [filteredArticles, setFilteredArticles] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isSearchEmpty, setIsSearchEmpty] = useState(false);
 
   // Handle search functionality
   const handleSearch = async (e) => {
@@ -47,7 +49,6 @@ const Home = () => {
 
   // Handle filter change
   const handleFilterChange = useCallback((filterType, value) => {
-    console.log(filterType, value)
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
       [filterType]: value === '' ? '' : value,
@@ -59,15 +60,16 @@ const Home = () => {
     if (response && Object.keys(response).length > 0) {
       const transformedArticles = transformArticles(response); // Reusable function for transforming articles
       updateArticles(transformedArticles);
+      setIsLoaded(true);
     }
   }, [updateArticles]);
 
   useEffect(() => {
     const filtered = filterArticles(articles, selectedFilters);
-
     setFilteredArticles(filtered);
-  }, [articles, selectedFilters]);
 
+    setIsSearchEmpty(filtered.length === 0 && isLoaded);
+  }, [articles, selectedFilters, isLoaded]);
 
   return (
     <div>
@@ -75,6 +77,7 @@ const Home = () => {
         <Header />
       </header>
       <div className="container">
+        <h1>Generate Articles by Typing Your Keywords!</h1>
         <div>
           <SearchBar
             loading={loading}
@@ -88,14 +91,14 @@ const Home = () => {
           />
         </div>
         <div className="article-section">
-  {filteredArticles.length > 0 ? (
-    filteredArticles.map((article, id) => (
-      <ArticleCard key={id} article={article} />
-    ))
-  ) : (
-    <h1>Nothing Found</h1> // Render an empty component when no articles are found
-  )}
-</div>
+          {filteredArticles.length > 0 ? (
+            filteredArticles.map((article, id) => (
+              <ArticleCard key={id} article={article} />
+            ))
+          ) : (
+            <EmptyComponent isLoaded={isLoaded} isSearchEmpty={isSearchEmpty} />
+          )}
+        </div>
       </div>
     </div>
   );

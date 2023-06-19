@@ -35,7 +35,6 @@ const Register = () => {
     try {
       const { name, email, password } = formData;
       const response = await apiService.post(API_ENDPOINTS.REGISTER, { name, email, password });
-      console.log(response);
 
       // Check if user is defined in the response
       if (response && response.user) {

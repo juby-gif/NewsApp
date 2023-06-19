@@ -1,8 +1,7 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { routes } from "./utils";
-import { useContext } from "react";
-import { UserContext } from "./context";
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { routes } from './utils';
+import { UserContext } from './context';
 import './App.css';
 
 /**
@@ -12,12 +11,9 @@ import './App.css';
 const App = () => {
   const { isLoggedIn } = useContext(UserContext);
 
-  // For Debugging Purpose Only
-  // console.log(isLoggedIn);
-  
   return (
     <Router>
-      <Routes >
+      <Routes>
         {routes.map((route) => (
           <Route
             key={route.path}
@@ -25,7 +21,10 @@ const App = () => {
             element={
               route.private && !isLoggedIn ? (
                 <Navigate to="/login" replace />
-              ) : (route.component)}
+              ) : (
+                <route.component />
+              )
+            }
             exact={route.exact}
           />
         ))}

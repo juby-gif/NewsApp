@@ -13,6 +13,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'img_URL',
         'token',
         'refresh_token',
         'token_expires_at'

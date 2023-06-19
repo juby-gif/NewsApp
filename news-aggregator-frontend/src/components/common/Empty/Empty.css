@@ -1,0 +1,17 @@
+.empty-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .empty-component-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .empty-component-subtitle {
+    font-size: 18px;
+  }
+  

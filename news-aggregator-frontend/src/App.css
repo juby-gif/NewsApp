@@ -1,6 +1,138 @@
-section {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  width: 100%;
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Headings styles */
+h1 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 4vw;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 3.5vw;
+}
+
+h3 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 3vw;
+}
+
+h4 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 2.5vw;
+}
+
+h5 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 2vw;
+}
+
+/* Paragraph styles */
+p {
+  margin-bottom: 1rem;
+  font-size: 1.5vw;
+}
+
+/* Common element styles */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+input,
+textarea,
+select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  word-wrap: break-word;
+  max-width: 165px;
+}
+
+/* Container styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Adjust styles for smaller devices */
+  .container {
+    padding: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for extra small devices */
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+  }
 }

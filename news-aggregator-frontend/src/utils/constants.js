@@ -14,9 +14,11 @@ const API_ENDPOINTS = {
  * Constants for the News Aggregator application
  */
 const CONSTANTS = {
-  NEWS_API: 'newsapi',
-  THE_GUARDIAN: 'theguardian',
-  THE_NEW_YORK_TIMES: 'nytimes',
+  sources: {
+    NEWS_API: { name: 'News API', value: 'newsapi' },
+    THE_GUARDIAN: { name: 'The Guardian', value: 'theguardian' },
+    THE_NEW_YORK_TIMES: { name: 'The New York Times', value: 'nytimes' },
+  },
 };
 
 export { API_ENDPOINTS, CONSTANTS };

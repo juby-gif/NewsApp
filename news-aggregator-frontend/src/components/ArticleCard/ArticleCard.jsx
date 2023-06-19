@@ -22,14 +22,14 @@ const ArticleCard = ({ article }) => {
 
     // Assign custom names based on the source value
     switch (source) {
-      case CONSTANTS.NEWS_API:
-        sourceName = 'News API';
+      case CONSTANTS.sources.NEWS_API.value:
+        sourceName = CONSTANTS.sources.NEWS_API.name;
         break;
-      case CONSTANTS.THE_NEW_YORK_TIMES:
-        sourceName = 'The New York Times';
+      case CONSTANTS.sources.THE_NEW_YORK_TIMES.value:
+        sourceName = CONSTANTS.sources.THE_NEW_YORK_TIMES.name;
         break;
-      case CONSTANTS.THE_GUARDIAN:
-        sourceName = 'The Guardian';
+      case CONSTANTS.sources.THE_GUARDIAN.value:
+        sourceName = CONSTANTS.sources.THE_GUARDIAN.name;
         break;
       default:
         sourceName = source;

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 return new class extends Migration
 {
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('img_URL')->default(Storage::url('images/default-user.jpg'));
             $table->string('token')->nullable();
             $table->string('refresh_token')->nullable();
             $table->string('token_expires_at')->nullable();

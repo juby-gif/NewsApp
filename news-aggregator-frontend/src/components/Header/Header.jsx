@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import { UserContext } from '../../context';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,23 +36,34 @@ const UserNavigation = ({ menuOpen, handleMenuToggle }) => (
 
 const NavigationPages = ({ menuOpen }) => {
   return (
-    <nav className={`navigation-pages ${menuOpen ? 'expanded' : ''}`}>
+    <div className={`navigation-pages ${menuOpen ? 'expanded' : ''}`}>
       <ul className={`${menuOpen ? 'expanded' : ''}`}>
         <li>
           <Link to="/user-profile">Profile</Link>
         </li>
+        <li>
+          <Link to="/logout">Logout</Link>
+        </li>
       </ul>
-    </nav>
+    </div>
   );
 };
 
-
-
+/**
+ * The user info component that displays the user information.
+ * For Simplicity i made the image to be static and therefore
+ * registered users cannot change images as this feature is 
+ * not supported in this version
+ */
 const UserInfo = () => (
-  <div className="user-info">
-    <UserImage />
-    <span className="user-name">John Doe</span>
-  </div>
+  <UserContext.Consumer>
+    {({ user }) => (
+      <div className="user-info">
+        <UserImage />
+        <span className="user-name">{user?.name}</span>
+      </div>
+    )}
+  </UserContext.Consumer>
 );
 
 const UserImage = () => (

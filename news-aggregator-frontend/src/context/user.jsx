@@ -1,71 +1,88 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// Create the user context
 const UserContext = createContext();
 
-// Create the user provider component
 const UserProvider = ({ children }) => {
-  // State for user and login status
-  const [user, setUser] = useState(null);
-  const [articles, setArticles] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedIsLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
-  // Function to handle user login
+  const [user, setUser] = useState(storedUser || null);
+  const [articles, setArticles] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(storedIsLoggedIn);
+  const [error, setError] = useState('');
+
   const login = (userData) => {
     const updatedUser = {
       ...userData,
-      preferredSources: [],
-      preferredCategories: [],
-      preferredAuthors: [],
+      preferences: {
+        category: '',
+        source: '',
+        author: '',
+      },
     };
     updateUser(updatedUser);
     setIsLoggedIn(true);
-    localStorage.setItem('user', JSON.stringify(updatedUser));
+    persistUser(updatedUser);
   };
 
-  // Function to handle user logout
   const logout = () => {
     updateUser(null);
     setIsLoggedIn(false);
-    localStorage.removeItem('user');
+    clearUserFromStorage();
   };
 
-  // Function to update user preferences
   const updateUserPreferences = (preferences) => {
-    updateUser((prevUser) => ({ ...prevUser, ...preferences }));
+    try {
+      setUser((prevUser) => {
+        const updatedUser = {
+          ...prevUser,
+          preferences: preferences,
+        };
+        persistUser(updatedUser);
+        return updatedUser;
+      });
+    } catch (error) {
+      setError('Failed to update preferences.');
+      // Perform error handling actions or notify the user
+    }
   };
 
-  // Function to update the user state
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
+    persistUser(updatedUser);
   };
 
-  // Function to update the article state
-  const updateArticles = (articles) => {
-    setArticles(articles);
+  const updateArticles = (newArticles) => {
+    setArticles(newArticles);
   };
 
-  // Check if user is already logged in
+  const persistUser = (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('isLoggedIn', 'true');
+  };
+
+  const clearUserFromStorage = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('isLoggedIn');
+  };
+
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    if (storedIsLoggedIn) {
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [storedIsLoggedIn]);
 
-  // Create the context value
   const contextValue = {
     user,
     articles,
     isLoggedIn,
+    error,
     login,
     logout,
     updateUserPreferences,
     updateArticles,
   };
 
-  // Render the user provider with the context value
   return (
     <UserContext.Provider value={contextValue}>
       {children}

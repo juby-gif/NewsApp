@@ -1,24 +1,30 @@
 .container {
-  max-width: 100%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 100vw;
 }
 
-.article-section {
+.container .search-section {
+  width: 100%;
+}
+
+.container .article-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: stretch;
   gap: 20px;
-  width: 100%;
+  box-sizing: border-box;
   max-height: 600px;
-  padding: 0px 20px;
   overflow-y: auto;
 }
 
-
 @media (max-width: 600px) {
-  .article-section {
-    flex-direction: column;
-    align-items: flex-start;
+  .container .article-section {
+    flex-direction: row;
+    align-items: center;
   }
 
   .article-card {

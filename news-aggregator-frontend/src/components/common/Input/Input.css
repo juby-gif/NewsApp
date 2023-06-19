@@ -4,6 +4,7 @@
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  max-width: unset;
 }
 
 .input:focus {
@@ -11,3 +12,4 @@
   border-color: #007bff;
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
 }
+

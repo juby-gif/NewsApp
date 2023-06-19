@@ -5,15 +5,15 @@ export function transformArticles(response) {
   
     Object.keys(response).forEach((key) => {
       switch (key) {
-        case CONSTANTS.NEWS_API:
+        case CONSTANTS?.sources?.NEWS_API?.value:
           transformedArticles.push(...transformNewsAPIArticles(response[key].articles));
           break;
   
-        case CONSTANTS.THE_GUARDIAN:
+        case CONSTANTS?.sources?.THE_GUARDIAN?.value:
           transformedArticles.push(...transformGuardianArticles(response[key].response.results));
           break;
   
-        case CONSTANTS.THE_NEW_YORK_TIMES:
+        case CONSTANTS?.sources?.THE_NEW_YORK_TIMES?.value:
           transformedArticles.push(...transformNYTimesArticles(response[key].response.docs));
           break;
   
@@ -38,7 +38,7 @@ export function transformArticles(response) {
         publishedAt: date,
       } = article;
   
-      return { title, subtitle, description, source:CONSTANTS.NEWS_API, author, redirectLink, img, date };
+      return { title, subtitle, description, source:CONSTANTS?.sources?.NEWS_API?.value, author, redirectLink, img, date };
     });
   }
   
@@ -54,7 +54,7 @@ export function transformArticles(response) {
         // API doesn't support author
         // author 
       } = article;
-      return { id, category, img, redirectLink:webUrl, source:CONSTANTS.THE_GUARDIAN, date, title };
+      return { id, category, img, redirectLink:webUrl, source:CONSTANTS?.sources?.THE_GUARDIAN?.value, date, title };
     });
   }
   
@@ -70,7 +70,7 @@ export function transformArticles(response) {
         pub_date: date,
       } = article;
   
-      return { id, title, category, author, redirectLink, source:CONSTANTS.THE_NEW_YORK_TIMES, subtitle, date };
+      return { id, title, category, author, redirectLink, source:CONSTANTS?.sources?.THE_NEW_YORK_TIMES?.value, subtitle, date };
     });
   }
   

@@ -3,6 +3,7 @@ import { routes } from './routes';
 import { API_ENDPOINTS, CONSTANTS } from './constants'
 import { filterArticles } from './filtersService';
 import { transformArticles } from './transformService';
+import { getUniqueAuthors, getSources } from './list';
 
 export {
     useApiService,
@@ -10,5 +11,7 @@ export {
     API_ENDPOINTS,
     CONSTANTS,
     filterArticles,
-    transformArticles
+    transformArticles,
+    getUniqueAuthors,
+    getSources
 };
